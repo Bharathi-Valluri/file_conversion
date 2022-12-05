@@ -30,9 +30,15 @@ const convertFile = async (req, res) => {
 
     res.status(200).json({
       response: resp,
-      message: 'successfully converted'
+      message: 'TIFF File successfully converted into PNG format'
     })
-  } catch (error) {}
+  } catch (error) {
+    console.log(error.message)
+    res.status(400).json({
+      response: null,
+      message: 'failed to converted into PNG'
+    })
+  }
 }
 const pngToBlob = (req, res) => {
   try {
